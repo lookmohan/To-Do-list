@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+
+            h2 {
+                color: #333;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            form {
+                margin-top: 10px;
+            }
+                input[type="text"] {
+                        padding: 5px;
+                    }
+
+                    button {
+                        padding: 8px;
+                        cursor: pointer;
+                        background-color: #4CAF50;
+                        color: white;
+                        border: none;
+                    }
+
+                    a {
+                        margin-left: 10px;
+                        text-decoration: none;
+                        color: #333;
+                    }
+                </style>
+
+
+
+
+            <title>To-Do List</title>
+        </head>
+        <body>
+            <h2>To-Do List</h2>
+
+            <ul>
+                {% for task in tasks %}
+                    <li>
+                        {{ task }} 
+                        <a href="/edit/{{ loop.index0 }}">Edit</a>
+                        <a href="/remove/{{ loop.index0 }}">Remove</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <form action="/add" method="post">
+                <input type="text" name="task" placeholder="Enter task">
+                <button type="submit">Add</button>
+            </form>
+        </body>
+        </html>
